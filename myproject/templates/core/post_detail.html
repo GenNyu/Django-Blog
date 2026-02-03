@@ -1,0 +1,20 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<section class="post-detail reveal">
+  <div class="post-actions">
+    {% if user.is_authenticated and user == post.author %}
+      <a class="btn ghost" href="{% url 'edit_post' post.id %}">Sửa bài</a>
+      <a class="btn danger" href="{% url 'delete_post' post.id %}">Xóa</a>
+    {% endif %}
+    <a class="btn ghost" href="{% url 'home' %}">Quay lại</a>
+  </div>
+
+  <h1 class="post-title">{{ post.title }}</h1>
+  <p class="post-meta">Tác giả: {{ post.author.username }}</p>
+  <div class="post-body">{{ post.context|linebreaks }}</div>
+</section>
+{% endblock %}
+

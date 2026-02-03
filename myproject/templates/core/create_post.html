@@ -1,0 +1,24 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Tạo bài viết{% endblock %}
+
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <div class="form-head">
+      <h1>Tạo bài viết</h1>
+      <p class="lead">Chia sẻ ý tưởng của bạn với cộng đồng.</p>
+    </div>
+
+    <form method="post" class="form-grid">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Lưu</button>
+        <a class="btn ghost" href="{% url 'home' %}">Hủy</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+

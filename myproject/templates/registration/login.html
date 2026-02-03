@@ -1,0 +1,24 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Đăng nhập{% endblock %}
+
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <div class="form-head">
+      <h1>Đăng nhập</h1>
+      <p class="lead">Đăng nhập để tiếp tục tạo và quản lý bài viết.</p>
+    </div>
+
+    <form method="post" class="form-grid">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Đăng nhập</button>
+        <a class="btn ghost" href="{% url 'home' %}">Trang chủ</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+

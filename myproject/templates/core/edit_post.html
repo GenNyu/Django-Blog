@@ -1,0 +1,24 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Chỉnh sửa bài viết{% endblock %}
+
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <div class="form-head">
+      <h1>Chỉnh sửa: {{ post.title }}</h1>
+      <p class="lead">Cập nhật nội dung và lưu lại thay đổi.</p>
+    </div>
+
+    <form method="post" class="form-grid">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Lưu</button>
+        <a class="btn ghost" href="{% url 'post_detail' post.id %}">Hủy</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}
+

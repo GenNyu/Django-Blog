@@ -1,0 +1,48 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+<section class="hero reveal">
+  <div class="hero-text">
+    <p class="eyebrow">Blog</p>
+    <h1>Danh sách bài viết</h1>
+    <p class="lead">Nơi tập hợp những ý tưởng, câu chuyện và góc nhìn mới. Bắt đầu viết và chia sẻ góc nhìn của bạn.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="{% url 'create_post' %}">Viết bài mới</a>
+      <a class="btn ghost" href="#posts">Khám phá bài viết</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <h2>Chủ đề gợi ý</h2>
+    <div class="tag-list">
+      <span class="tag">#đời-sống</span>
+      <span class="tag">#công-nghệ</span>
+      <span class="tag">#sáng-tạo</span>
+      <span class="tag">#học-tập</span>
+    </div>
+    <p class="lead">Chọn một chủ đề và bắt đầu viết bài đầu tiên của bạn.</p>
+  </div>
+</section>
+
+<section id="posts" class="posts">
+  <div class="section-head">
+    <h2>Bài viết mới</h2>
+    <span class="pill">{{ posts|length }} bài</span>
+  </div>
+
+  <div class="post-grid">
+    {% for p in posts %}
+      <article class="post-card reveal">
+        <h3><a href="{% url 'post_detail' p.id %}">{{ p.title }}</a></h3>
+        <p class="post-meta">Tác giả: {{ p.author.username }}</p>
+        <p class="post-excerpt">{{ p.context|truncatewords:28 }}</p>
+        <a class="text-link" href="{% url 'post_detail' p.id %}">Đọc thêm</a>
+      </article>
+    {% empty %}
+      <div class="empty-state">Chưa có bài viết nào. Hãy tạo bài đầu tiên.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+

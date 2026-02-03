@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Xóa bài viết{% endblock %}
+
+{% block content %}
+<section class="form-section">
+  <div class="form-card">
+    <div class="form-head">
+      <h1>Xóa bài viết</h1>
+      <p class="lead">Bạn chắc chắn muốn xóa bài "{{ post.title }}"? Hành động này không thể hoàn tác.</p>
+    </div>
+
+    <form method="post" class="form-grid">
+      {% csrf_token %}
+      <div class="form-actions">
+        <button type="submit" class="btn danger">Xóa</button>
+        <a class="btn ghost" href="{% url 'post_detail' post.id %}">Hủy</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,563 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-1: #f1e7d8;
+    --bg-2: #dfe9f2;
+    --ink: #1f1d1a;
+    --muted: #5c5a55;
+    --accent: #0f5d66;
+    --accent-2: #c65a2e;
+    --card: #fff6ec;
+    --card-strong: #ffffff;
+    --border: rgba(31, 29, 26, 0.12);
+    --shadow: 0 22px 48px rgba(31, 29, 26, 0.18);
+    --radius: 18px;
+    --max: 1080px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: radial-gradient(circle at 15% 15%, rgba(253, 214, 170, 0.55), transparent 55%),
+        radial-gradient(circle at 85% 5%, rgba(152, 205, 224, 0.5), transparent 50%),
+        linear-gradient(120deg, var(--bg-1), var(--bg-2));
+}
+
+.page {
+    min-height: 100vh;
+    position: relative;
+}
+
+.page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(31, 29, 26, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 29, 26, 0.04) 1px, transparent 1px);
+    background-size: 90px 90px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.35;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.shell {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 26px;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 247, 237, 0.86);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(135deg, #0f5d66, #163b4c);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.brand-title {
+    font-family: "Fraunces", "Georgia", serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.brand-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.site-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+    background: rgba(15, 93, 102, 0.1);
+    border-color: rgba(15, 93, 102, 0.2);
+    color: var(--accent);
+}
+
+.nav-cta {
+    background: #1f1d1a;
+    color: #fff;
+}
+
+.nav-cta:hover {
+    background: #141312;
+    color: #fff;
+}
+
+.auth-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.greeting {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--card-strong);
+    color: var(--ink);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(31, 29, 26, 0.16);
+}
+
+.btn.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: transparent;
+}
+
+.btn.primary:hover {
+    background: #0b4d55;
+}
+
+.btn.ghost {
+    background: transparent;
+}
+
+.btn.danger {
+    background: #b3472b;
+    color: #fff;
+    border-color: transparent;
+}
+
+.btn.danger:hover {
+    background: #9c3c23;
+}
+
+.main-content {
+    padding: 36px 0 70px;
+}
+
+.messages {
+    display: grid;
+    gap: 10px;
+    margin: 0 0 24px;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid;
+    background: var(--card-strong);
+    font-weight: 600;
+}
+
+.message.warning {
+    border-color: #f2b84b;
+    background: #fff4dd;
+}
+
+.message.error {
+    border-color: #ff7a7a;
+    background: #ffecec;
+}
+
+.message.success {
+    border-color: #5abf7a;
+    background: #eefaf2;
+}
+
+.message.info {
+    border-color: #7ab4ff;
+    background: #eef5ff;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 34px;
+}
+
+.hero-text h1 {
+    font-family: "Fraunces", "Georgia", serif;
+    font-size: 42px;
+    margin: 8px 0 12px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 12px;
+    color: var(--accent-2);
+    margin: 0;
+}
+
+.lead {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.hero-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 26px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.hero-card h2 {
+    font-family: "Fraunces", "Georgia", serif;
+    margin-top: 0;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.tag {
+    background: #f3e6d6;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: #7a523e;
+}
+
+.posts {
+    margin-top: 12px;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.section-head h2 {
+    font-family: "Fraunces", "Georgia", serif;
+    margin: 0;
+}
+
+.pill {
+    background: var(--card-strong);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.post-card {
+    background: var(--card-strong);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 16px 32px rgba(31, 29, 26, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -20% -30% -20%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(198, 90, 46, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.post-card h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.post-card a:hover {
+    color: var(--accent);
+}
+
+.post-meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+}
+
+.post-excerpt {
+    color: var(--muted);
+    margin: 0;
+}
+
+.text-link {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.empty-state {
+    padding: 24px;
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    background: rgba(255, 246, 236, 0.85);
+    color: var(--muted);
+}
+
+.form-section {
+    display: grid;
+    place-items: center;
+}
+
+.form-card {
+    width: min(640px, 100%);
+    background: var(--card-strong);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.form-head h1 {
+    margin-top: 0;
+    font-family: "Fraunces", "Georgia", serif;
+}
+
+.form-grid p {
+    margin: 0 0 16px;
+}
+
+.form-grid label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-grid input,
+.form-grid textarea,
+.form-grid select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    font-family: inherit;
+    font-size: 15px;
+    background: #fdfaf6;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-grid textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus,
+.form-grid select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(15, 93, 102, 0.15);
+    background: #fff;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.post-detail {
+    background: var(--card-strong);
+    border: 1px solid var(--border);
+    padding: 34px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.post-title {
+    font-family: "Fraunces", "Georgia", serif;
+    font-size: 38px;
+    margin-top: 0;
+}
+
+.post-body {
+    color: #2c2a26;
+    line-height: 1.8;
+}
+
+.post-body p {
+    margin: 0 0 16px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.site-footer {
+    padding: 24px 0 40px;
+    color: var(--muted);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.reveal {
+    animation: rise 0.6s ease both;
+}
+
+.post-card.reveal {
+    animation-delay: 0.05s;
+}
+
+.post-card.reveal:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.post-card.reveal:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.post-card.reveal:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 34px;
+    }
+
+    .header-inner {
+        justify-content: center;
+    }
+
+    .site-nav,
+    .auth-block {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .shell {
+        padding: 0 16px;
+    }
+
+    .post-detail {
+        padding: 24px;
+    }
+}
